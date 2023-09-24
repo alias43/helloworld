@@ -24,6 +24,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Pesanan pesanan = new Pesanan();
 
+        ListMenu listMenu = new ListMenu();
+        listMenu.showMenu();
+
         while (true) {
             tampilMenu();
             int pilihan = sc.nextInt();
@@ -103,14 +106,9 @@ public class Main {
     private static void simpanStruk(Pesanan pesanan) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("binarFood.txt"))) {
             writer.write(batas);
-            writer.newLine();
             writer.write("BinarFood");
-            writer.newLine();
             writer.write("Terima kasih sudah memesan di BinarFood");
-            writer.newLine();
             writer.write("Dibawah ini adalah pesanan anda");
-            writer.newLine();
-
             for (PesananItem pesananItem : pesanan.getItemPesanan()) {
                 Menu menu = pesananItem.getMenu();
                 int jumlah = pesananItem.getJumlah();
@@ -119,11 +117,8 @@ public class Main {
             }
 
             writer.write("Total\t\t\t" + pesanan.hitungTotal());
-            writer.newLine();
             writer.write("Pembayaran: BinarCash");
-            writer.newLine();
             writer.write("=========================");
-            writer.newLine();
         } catch (IOException e) {
             System.out.println("Terjadi kesalahan.");
             e.printStackTrace();

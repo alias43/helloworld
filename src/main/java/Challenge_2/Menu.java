@@ -2,9 +2,9 @@ package Challenge_2;
 
 public class Menu {
     private String nama;
-    private int harga;
+    private Integer harga;
 
-    public Menu(String nama, int harga) {
+    public Menu(String nama, Integer harga) {
         this.nama = nama;
         this.harga = harga;
     }
@@ -17,4 +17,3 @@ public class Menu {
         return harga;
     }
 }
-

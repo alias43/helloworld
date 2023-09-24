@@ -1,0 +1,5 @@
+=== Struk Pembelian ===
+capcay            |   15000    |	2
+kwetiau           |   10000    |	5
+Total : Rp.80000
+=======================
