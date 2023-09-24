@@ -1,5 +1,6 @@
-=== Struk Pembelian ===
-capcay            |   15000    |	2
-kwetiau           |   10000    |	5
-Total : Rp.80000
+====== Binar Food ======
+capcay            |   15000    |	3
+kwetiau           |   10000    |	2
+nasi goreng       |   12000    |	2
+Total : Rp.89000
 =======================

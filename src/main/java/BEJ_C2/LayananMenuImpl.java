@@ -28,5 +28,4 @@ public class LayananMenuImpl implements LayananMenu {
         return menu.get(index - 1);
     }
 
-
 }

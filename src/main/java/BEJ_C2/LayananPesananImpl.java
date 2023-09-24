@@ -31,8 +31,9 @@ public class LayananPesananImpl implements LayananPesanan{
     }
 
     @Override
-    public void totalBayar() {
+    public int totalBayar() {
         System.out.format("Total : Rp." + hitungTotalBayar() + "\n");
+        return 0;
     }
 
     @Override
