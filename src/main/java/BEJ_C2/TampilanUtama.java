@@ -53,9 +53,10 @@ public class TampilanUtama {
         }
     }
 
+
     void jumlahPesanan(Integer index){
         Menu item = menu.menuDiIndex(index);
-        System.out.format("%-17s %1s %7s%n", "Pilihan Anda\n" + item.getNama(), "|", item.getHarga());
+        System.out.format("%-17s %1s %7s%n", "Pilihan Anda\n" + item.getNama(), "|", item.getHarga().orElse(0));
         try {
             System.out.println("Masukkan jumlah pesanan: ");
             int jumlahItem = sc.nextInt();
@@ -70,16 +71,16 @@ public class TampilanUtama {
             jumlahPesanan(index);
         }
         catch (InputMismatchException ime) {
-            System.out.println("Masukkan harus berupa angka");
+            System.out.println( "Masukkan harus berupa angka");
             sc.nextLine();
             jumlahPesanan(index);
         }
     }
     void validasiJumlahPesanan(Menu item, Integer jumlahItem){
-        System.out.println("ini: " + item.getNama() +"\t"+ item.getHarga() +"\t"+ jumlahItem);
+        System.out.println("Pesanan ditambahkan-> " + jumlahItem + "\t" + item.getNama());
         if (jumlahItem > 0){
             try {
-                pesan.tambahPesanan(item.getNama(), item.getHarga(), jumlahItem);
+                pesan.tambahPesanan(item.getNama(), item.getHarga().orElse(0), jumlahItem);
                 System.out.println("0. Lanjut ke Pembayaran");
                 System.out.println("1. Kembali ke Menu");
                 int input = sc.nextInt();

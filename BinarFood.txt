@@ -1,6 +1,5 @@
 ====== Binar Food ======
-capcay            |   15000    |	3
-kwetiau           |   10000    |	2
-nasi goreng       |   12000    |	2
-Total : Rp.89000
+kwetiau           | Optional[10000]    |	2
+nasi goreng       | Optional[12000]    |	2
+Total : Rp.44000
 =======================

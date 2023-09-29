@@ -1,6 +1,12 @@
 package BEJ_C2;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -9,5 +15,5 @@ import lombok.*;
 public class Menu {
    @NonNull
     private String nama;
-    private Integer harga;
+    private Optional<Integer> harga;
 }

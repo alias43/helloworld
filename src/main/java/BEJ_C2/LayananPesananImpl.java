@@ -4,13 +4,14 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class LayananPesananImpl implements LayananPesanan{
 
     private HashMap<String, Pesanan> pesananMap = new HashMap<>();
     @Override
     public void tambahPesanan(String nama, Integer harga, Integer jumlah) {
-        Pesanan itemPesanan = new Pesanan(nama, harga, jumlah);
+        Pesanan itemPesanan = new Pesanan(nama, Optional.of(harga), jumlah);
         if (pesananMap.containsKey(itemPesanan.getNama())){
             Integer updateJumlah = (pesananMap.get(nama)).getJumlah() + jumlah;
             pesananMap.get(nama).setJumlah(updateJumlah);
@@ -21,13 +22,11 @@ public class LayananPesananImpl implements LayananPesanan{
     }
 
     public void tampilPesanan() {
-        int i= 1;
+        //tampilkan daftar pesanan dengan stream
         System.out.format("%-17s %1s %7s %1s", " Menu ", "|", "Harga", "|\t" + "Jumlah\n");
-        for (HashMap.Entry<String, Pesanan> entry : pesananMap.entrySet()) {
-            Pesanan pesanan = entry.getValue();
-            System.out.format("%-17s %1s %7s %1s", i +". "+ pesanan.getNama(), "|", pesanan.getHarga(), "|\t" + pesanan.getJumlah() + "\n");
-            i++;
-        }
+        pesananMap.entrySet().stream().forEach(pesananItem -> {
+            System.out.format("%-17s %1s %7s %1s", pesananItem.getKey(), "|", pesananItem.getValue().getHarga().orElse(0), "|\t" + pesananItem.getValue().getJumlah() + "\n");
+        });
     }
 
     @Override
@@ -55,9 +54,8 @@ public class LayananPesananImpl implements LayananPesanan{
 
     int hitungTotalBayar(){
         int total = 0;
-        for (HashMap.Entry<String, Pesanan> entry : pesananMap.entrySet()) {
-            Pesanan pesanan = entry.getValue();
-            total += (pesanan.getHarga() * pesanan.getJumlah());
+        for (Pesanan pesanan : pesananMap.values()) {
+            total += pesanan.getHarga().orElse(0) * pesanan.getJumlah();
         }
         return total;
     }
